@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Timer</title>
+</head>
+
+<body>
+    <div class="timeholder">
+        <div class="hours" id="hours"></div>
+        <div class="mins" id="mins"></div>
+        <div class="secs" id="secs"></div>
+    </div>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+
+        .timeholder {
+            font-family: 'IBM Plex Sans', sans-serif;
+            display: flex;
+            gap: 24px;
+            font-size: 48px;
+            justify-content: center;
+            transition: gap 1s ease-in-out;
+            width: 100vw;
+        }
+
+        .timeholder:hover {
+            gap: 48px;
+        }
+    </style>
+
+    <script>
+        //Time
+        let timeHolder, hours, mins, secs;
+
+        function getTheTime() {
+            timeHolder = new Date();
+            hours = timeHolder.getHours();
+            mins = timeHolder.getMinutes();
+            secs = timeHolder.getSeconds();
+        }
+        setInterval(getTheTime, 1000);
+
+        function setTheTime() {
+            document.getElementById('hours').innerText = `${hours} : `;
+            document.getElementById('mins').innerText = `${mins} : `;
+            document.getElementById('secs').innerText = ` ${secs}`;
+        }
+
+        setInterval(setTheTime, 1000);
+    </script>
+</body>
+
+</html>
