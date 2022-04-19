@@ -1,58 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Digital Timer</title>
-</head>
+  </head>
 
-<body>
-    <div class="timeholder">
-        <div class="hours" id="hours"></div>
-        <div class="mins" id="mins"></div>
-        <div class="secs" id="secs"></div>
+  <body>
+    <div class="time-holder">
+      <span id="hours"></span>
+      <span id="semi-colon">:</span>
+      <span id="mins"></span>
+      <span id="semi-colon">:</span>
+      <span id="secs"></span>
+      <span id="am-pm"></span>
     </div>
+    <div class="btn-holder"><button class="toggle" id="toggle"></button></div>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap");
 
-        .timeholder {
-            font-family: 'IBM Plex Sans', sans-serif;
-            display: flex;
-            gap: 24px;
-            font-size: 48px;
-            justify-content: center;
-            transition: gap 1s ease-in-out;
-            width: 100vw;
-        }
+      .time-holder,
+      .btn-holder {
+        font-family: "IBM Plex Sans", sans-serif;
+        display: flex;
+        gap: 24px;
+        font-size: 48px;
+        justify-content: center;
+        transition: gap 1s ease-in-out;
+        width: 100vw;
+      }
 
-        .timeholder:hover {
-            gap: 48px;
-        }
+      .time-holder:hover {
+        gap: 48px;
+      }
+      .btn-holder {
+        margin-top: 48px;
+      }
+
+      .toggle {
+        font-size: 18px;
+        line-height: 24px;
+        color: #222;
+        background-color: #fff;
+        border: 1px solid #222;
+        border-radius: 4px;
+        padding: 8px;
+      }
     </style>
 
     <script>
-        //Time
-        let timeHolder, hours, mins, secs;
+      let hours,
+        mins,
+        secs = 0;
+      let amPm;
+      let is12hrs = false;
 
-        function getTheTime() {
-            timeHolder = new Date();
-            hours = timeHolder.getHours();
-            mins = timeHolder.getMinutes();
-            secs = timeHolder.getSeconds();
-        }
-        setInterval(getTheTime, 1000);
+      function get24hrs() {
+        const mainDate = new Date();
+        hours = mainDate.getHours();
+        mins = mainDate.getMinutes();
+        secs = mainDate.getSeconds();
+        amPm = "";
+      }
 
-        function setTheTime() {
-            document.getElementById('hours').innerText = `${hours} : `;
-            document.getElementById('mins').innerText = `${mins} : `;
-            document.getElementById('secs').innerText = ` ${secs}`;
-        }
+      function get12hrs() {
+        const mainDate = new Date();
+        originalHours = mainDate.getHours();
+        hours = originalHours % 12;
+        hours = hours === 0 ? 12 : hours;
+        mins = mainDate.getMinutes();
+        secs = mainDate.getSeconds();
+        amPm = originalHours < 12 ? "AM" : "PM";
+      }
 
-        setInterval(setTheTime, 1000);
+      function getTheTime() {
+        is12hrs ? get12hrs() : get24hrs();
+        is12hrs
+          ? (document.getElementById("toggle").innerText =
+              "See in 24 Hours Format")
+          : (document.getElementById("toggle").innerText =
+              "See in 12 Hours Format");
+        setTheTime();
+      }
+      setInterval(getTheTime, 1000);
+
+      const paddingFormat = (sample) => String(sample).padStart(2, "0");
+
+      function setTheTime() {
+        document.getElementById("hours").innerText = paddingFormat(hours);
+        document.getElementById("mins").innerText = paddingFormat(mins);
+        document.getElementById("secs").innerText = paddingFormat(secs);
+        document.getElementById("am-pm").innerText = amPm;
+      }
+
+      //   is12hrs
+      //     ? (document.getElementById("toggle").textContent =
+      //         "See in 24 Hours Format")
+      //     : (document.getElementById("toggle").textContent =
+      //         "See in 12 Hours Format");
+
+      document.querySelector(".toggle").addEventListener("click", function () {
+        is12hrs = !is12hrs;
+      });
     </script>
-</body>
-
+  </body>
 </html>
