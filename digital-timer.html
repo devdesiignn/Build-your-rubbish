@@ -10,9 +10,9 @@
   <body>
     <div class="time-holder">
       <span id="hours"></span>
-      <span id="semi-colon">:</span>
+      <span class="semi-colon">:</span>
       <span id="mins"></span>
-      <span id="semi-colon">:</span>
+      <span class="semi-colon">:</span>
       <span id="secs"></span>
       <span id="am-pm"></span>
     </div>
@@ -47,6 +47,21 @@
         border: 1px solid #222;
         border-radius: 4px;
         padding: 8px;
+      }
+      @keyframes blink {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .semi-colon {
+        opacity: 1;
+        animation-name: blink;
+        animation-duration: 1000ms;
+        animation-fill-mode: both;
+        animation-iteration-count: infinite;
       }
     </style>
 
