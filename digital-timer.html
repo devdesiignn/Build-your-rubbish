@@ -29,27 +29,30 @@
       .btn-holder {
         font-family: "IBM Plex Sans", sans-serif;
         display: flex;
-        gap: 24px;
+        gap: 48px;
         font-size: 48px;
         justify-content: center;
         transition: gap 1s ease-in-out;
         width: 100%;
         box-sizing: border-box;
       }
-
+      .time-holder{
+        margin-top: 36px;
+      }
       .time-holder:hover {
-        gap: 48px;
+        gap: 24px;
       }
       .btn-holder {
-        margin-top: 48px;
+        margin-top: 72px;
       }
 
       .toggle {
         font-size: 18px;
         line-height: 24px;
-        border: 1px solid #222;
+        border: 2px solid;
         border-radius: 4px;
-        padding: 8px;
+        padding: 12px;
+        letter-spacing: 2px;
       }
 
       @keyframes blink {
@@ -75,8 +78,8 @@
         mins,
         secs = 0;
       let amPm;
-      let is12hrs = false;
-      let isLight = false;
+      let is12hrs = true;
+      let isLight = true;
 
       function get24hrs() {
         const mainDate = new Date();
@@ -122,14 +125,28 @@
 
       function lightTheme() {
         let body = document.getElementById("body");
+        let toggle = document.getElementsByClassName("toggle");
         body.style.backgroundColor = "#f1f1f1";
         body.style.color = "#222222";
+        toggle[0].style.backgroundColor = "#f1f1f1";
+        toggle[0].style.color = "#222222";
+        toggle[1].style.backgroundColor = "#f1f1f1";
+        toggle[1].style.color = "#222222";
+        toggle[0].style.borderColor = "#222";
+        toggle[1].style.borderColor = "#222";
       }
 
       function darkTheme() {
         let body = document.getElementById("body");
+        let toggle = document.getElementsByClassName("toggle");
         body.style.backgroundColor = "#222222";
         body.style.color = "#f1f1f1";
+        toggle[0].style.backgroundColor = "#222222";
+        toggle[0].style.color = "#f1f1f1";
+        toggle[1].style.backgroundColor = "#222222";
+        toggle[1].style.color = "#f1f1f1";
+        toggle[0].style.borderColor = "#f1f1f1";
+        toggle[1].style.borderColor = "#f1f1f1";
       }
 
       function setTheme() {
