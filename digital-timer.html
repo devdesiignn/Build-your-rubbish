@@ -7,7 +7,7 @@
     <title>Digital Timer</title>
   </head>
 
-  <body>
+  <body id="body">
     <div class="time-holder">
       <span id="hours"></span>
       <span class="semi-colon">:</span>
@@ -16,7 +16,11 @@
       <span id="secs"></span>
       <span id="am-pm"></span>
     </div>
-    <div class="btn-holder"><button class="toggle" id="toggle"></button></div>
+
+    <div class="btn-holder">
+      <button class="toggle" id="theme"></button>
+      <button class="toggle" id="view"></button>
+    </div>
 
     <style>
       @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap");
@@ -29,7 +33,8 @@
         font-size: 48px;
         justify-content: center;
         transition: gap 1s ease-in-out;
-        width: 100vw;
+        width: 100%;
+        box-sizing: border-box;
       }
 
       .time-holder:hover {
@@ -42,12 +47,11 @@
       .toggle {
         font-size: 18px;
         line-height: 24px;
-        color: #222;
-        background-color: #fff;
         border: 1px solid #222;
         border-radius: 4px;
         padding: 8px;
       }
+
       @keyframes blink {
         0% {
           opacity: 0;
@@ -56,10 +60,11 @@
           opacity: 1;
         }
       }
+
       .semi-colon {
         opacity: 1;
         animation-name: blink;
-        animation-duration: 1000ms;
+        animation-duration: 1100ms;
         animation-fill-mode: both;
         animation-iteration-count: infinite;
       }
@@ -71,6 +76,7 @@
         secs = 0;
       let amPm;
       let is12hrs = false;
+      let isLight = false;
 
       function get24hrs() {
         const mainDate = new Date();
@@ -93,9 +99,9 @@
       function getTheTime() {
         is12hrs ? get12hrs() : get24hrs();
         is12hrs
-          ? (document.getElementById("toggle").innerText =
+          ? (document.getElementById("view").innerText =
               "See in 24 Hours Format")
-          : (document.getElementById("toggle").innerText =
+          : (document.getElementById("view").innerText =
               "See in 12 Hours Format");
         setTheTime();
       }
@@ -110,8 +116,34 @@
         document.getElementById("am-pm").innerText = amPm;
       }
 
-      document.querySelector(".toggle").addEventListener("click", function () {
+      document.querySelector("#view").addEventListener("click", function () {
         is12hrs = !is12hrs;
+      });
+
+      function lightTheme() {
+        let body = document.getElementById("body");
+        body.style.backgroundColor = "#f1f1f1";
+        body.style.color = "#222222";
+      }
+
+      function darkTheme() {
+        let body = document.getElementById("body");
+        body.style.backgroundColor = "#222222";
+        body.style.color = "#f1f1f1";
+      }
+
+      function setTheme() {
+        isLight ? lightTheme() : darkTheme();
+        isLight
+          ? (document.getElementById("theme").innerText = "Switch to Dark Mode")
+          : (document.getElementById("theme").innerText =
+              "Switch to Light Mode");
+      }
+
+      setTheme();
+
+      document.querySelector("#theme").addEventListener("click", function () {
+        isLight = !isLight;
       });
     </script>
   </body>
