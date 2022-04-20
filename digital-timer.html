@@ -140,7 +140,7 @@
               "Switch to Light Mode");
       }
 
-      setTheme();
+      setInterval(setTheme);
 
       document.querySelector("#theme").addEventListener("click", function () {
         isLight = !isLight;
