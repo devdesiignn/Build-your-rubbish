@@ -18,32 +18,35 @@
     </div>
 
     <div class="btn-holder">
-      <button class="toggle" id="theme"></button>
       <button class="toggle" id="view"></button>
+      <button class="toggle" id="theme"></button>
     </div>
 
     <style>
       @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap");
 
+      body {
+        box-sizing: border-box;
+      }
       .time-holder,
       .btn-holder {
         font-family: "IBM Plex Sans", sans-serif;
+        font-size: 4rem;
+        gap: 12px;
         display: flex;
-        gap: 36px;
-        font-size: 48px;
         justify-content: center;
-        transition: gap 1s ease-in-out;
-        width: 100vw;
-        box-sizing: border-box;
+        align-content: center;
+        width: 70%;
+        margin: 0 auto;
       }
-      .time-holder{
+      .time-holder {
         margin-top: 36px;
       }
-      .time-holder:hover {
-        gap: 24px;
-      }
       .btn-holder {
+        margin: 0 auto;
+        gap: 24px;
         margin-top: 72px;
+        flex-wrap: wrap;
       }
 
       .toggle {
@@ -51,7 +54,7 @@
         line-height: 24px;
         border: 2px solid;
         border-radius: 4px;
-        padding: 12px;
+        padding: 8px;
         letter-spacing: 2px;
       }
 
@@ -70,6 +73,13 @@
         animation-duration: 1100ms;
         animation-fill-mode: both;
         animation-iteration-count: infinite;
+      }
+
+      @media (min-width: 320px) and (max-width: 768px) {
+        .time-holder {
+          gap: 4px;
+          font-size: 3rem;
+        }
       }
     </style>
 
