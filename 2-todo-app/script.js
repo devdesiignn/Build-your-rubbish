@@ -1,31 +1,27 @@
-// on click the 'add task btn'
+//variable declaration and assignment
 const form = document.querySelector("form");
 const tasksContainer = document.querySelector("#tasks-holder");
 const addTaskBtn = document.querySelector("#add-task-button");
 const taskInput = document.querySelector("#task-input-field");
 
-tasksContainer.addEventListener("click", function (event) {
-  console.log(event);
-  // ignore if the clicked element is not the delete button
-  // as we're only interested in handling the delete operation
-  if (!event.target.classList.contains("delete-task-button")) return;
-
-  // remove the parent element of that button
-  event.target.closest(".task-holder").remove();
-});
-
 // always use the addEventListener Element class method
-form.addEventListener("submit", function (e) {
-  e.preventDefault(); //to prevent the page to auto reload on submit
+
+//on submit
+form.addEventListener("submit", function (event) {
+  event.preventDefault(); //to prevent the page to auto reload on submit
+
   if (taskInput.value == "") {
-    alert("Please enter a task!");
+    alert("Please enter a valid task, stop entering [SPACE]");
   } else {
-    document.querySelector("#tasks-holder").innerHTML += `
+    tasksContainer.innerHTML += `
     <div class="task-holder">
       <span class="task">${taskInput.value}</span>
       <button type="submit" class="delete-task-button">Delete</button>
     </div>
     `;
+
+    //to clear the input field
+    taskInput.value = "";
 
     //to tag a finished task
     const finishedTasks = document.querySelectorAll(".task");
@@ -34,8 +30,16 @@ form.addEventListener("submit", function (e) {
         finishedTask.classList.toggle("completed");
       })
     );
-
-    //to clear the input field
-    taskInput.value = "";
   }
+});
+
+//Handling the delete button
+tasksContainer.addEventListener("click", function (event) {
+  console.log(event);
+  // ignore if the clicked element is not the delete button
+  // as we're only interested in handling the delete operation
+  if (!event.target.classList.contains("delete-task-button")) return;
+
+  // remove the parent element of that button
+  event.target.closest(".task-holder").remove();
 });
