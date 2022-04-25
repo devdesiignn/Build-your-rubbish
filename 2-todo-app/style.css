@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap");
 
-#input-holder {
+#input-holder form{
   display: flex;
   justify-content: space-around;
   box-sizing: border-box;
