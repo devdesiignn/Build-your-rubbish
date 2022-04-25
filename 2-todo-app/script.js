@@ -1,4 +1,5 @@
 // on click the 'add task btn'
+const form = document.querySelector("form");
 const tasksContainer = document.querySelector('#tasks-holder');
 const addTaskBtn = document.querySelector("#add-task-button");
 const taskInput = document.querySelector("#task-input-field");
@@ -14,7 +15,8 @@ tasksContainer.addEventListener('click', function(event) {
 });
 
 // always use the addEventListener Element class method
-addTaskBtn.addEventListener('click', function () {
+form.addEventListener('submit', function (e) {
+  e.preventDefault(); //to prevent the page to auto reload on submit
   if (taskInput.value == "") {
     alert("Please enter a task!");
   } else {
