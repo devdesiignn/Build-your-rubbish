@@ -27,7 +27,13 @@ form.addEventListener("submit", function (e) {
     </div>
     `;
 
-    
+    //to tag a finished task
+    const finishedTasks = document.querySelectorAll(".task");
+    finishedTasks.forEach((finishedTask) =>
+      finishedTask.addEventListener("click", function () {
+        finishedTask.classList.toggle("completed");
+      })
+    );
 
     //to clear the input field
     taskInput.value = "";
