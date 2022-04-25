@@ -1,5 +1,8 @@
 // on click the 'add task btn'
 const tasksContainer = document.querySelector('#tasks-holder');
+const addTaskBtn = document.querySelector("#add-task-button");
+const taskInput = document.querySelector("#task-input-field");
+
 tasksContainer.addEventListener('click', function(event) {
   console.log(event);
   // ignore if the clicked element is not the delete button 
@@ -10,19 +13,19 @@ tasksContainer.addEventListener('click', function(event) {
   event.target.closest('.task-holder').remove()
 });
 
-document.querySelector("#add-task-button").onclick = function () {
-  if (document.querySelector("#task-input-field").value == "") {
+// always use the addEventListener Element class method
+addTaskBtn.addEventListener('click', function () {
+  if (taskInput.value == "") {
     alert("Please enter a task!");
   } else {
     document.querySelector("#tasks-holder").innerHTML += `
     <div class="task-holder">
       <span class="task">${
-        document.querySelector("#task-input-field").value
+        taskInput.value
       }</span>
       <button type="submit" class="delete-task-button">Delete</button>
     </div>
     `;
-
    
     //to tag a finished task
     let finishedTask = document.querySelectorAll(".task");
@@ -33,6 +36,6 @@ document.querySelector("#add-task-button").onclick = function () {
     }
 
     //to clear the input field
-    document.querySelector("#task-input-field").value = "";
+    taskInput.value = "";
   }
-};
+});
