@@ -1,4 +1,5 @@
-// on click the 'add task btn'
+// on click the 'add task btn' or when u click the enter key
+
 let form = document.querySelector("form");
 
 form.onsubmit = function (e) {
