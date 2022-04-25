@@ -1,13 +1,15 @@
 // on click the 'add task btn'
+let form = document.querySelector("form");
 
-document.querySelector("form").onsubmit = function (e) {
+form.onsubmit = function (e) {
   e.preventDefault(); //to prevent the page to auto reload on submit
 
-  document.querySelector("#tasks-holder").innerHTML += `
+  let taskHolder = document.querySelector("#tasks-holder");
+  let taskInputField = document.querySelector("#task-input-field");
+
+  taskHolder.innerHTML += `
     <div class="task-holder">
-      <span class="task">${
-        document.querySelector("#task-input-field").value
-      }</span>
+      <span class="task">${taskInputField.value}</span>
       <button type="submit" class="delete-task-button">Delete</button>
     </div>
     `;
@@ -15,6 +17,7 @@ document.querySelector("form").onsubmit = function (e) {
   //to delete a task
 
   let deleteTask = document.querySelectorAll(".delete-task-button");
+
   for (counter = 0; counter < deleteTask.length; counter++) {
     deleteTask[counter].onclick = function () {
       this.parentNode.remove();
@@ -24,6 +27,7 @@ document.querySelector("form").onsubmit = function (e) {
   //to tag a finished task
 
   let finishedTask = document.querySelectorAll(".task");
+
   for (counter = 0; counter < finishedTask.length; counter++) {
     finishedTask[counter].onclick = function () {
       this.classList.toggle("completed");
@@ -32,5 +36,5 @@ document.querySelector("form").onsubmit = function (e) {
 
   //to clear the input field
 
-  document.querySelector("#task-input-field").value = "";
+  taskInputField.value = "";
 };
