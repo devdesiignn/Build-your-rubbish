@@ -23,15 +23,7 @@ document.querySelector("#add-task-button").onclick = function () {
     </div>
     `;
 
-    //to delete a task
-
-    let deleteTask = document.querySelectorAll(".delete-task-button");
-    for (counter = 0; counter < deleteTask.length; counter++) {
-      deleteTask[counter].onclick = function () {
-        this.parentNode.remove();
-      };
-    }
-
+   
     //to tag a finished task
     let finishedTask = document.querySelectorAll(".task");
     for (counter = 0; counter < finishedTask.length; counter++) {
