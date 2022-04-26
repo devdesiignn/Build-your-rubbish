@@ -10,12 +10,24 @@ const taskInput = document.querySelector("#task-input-field");
 form.addEventListener("submit", function (event) {
   event.preventDefault(); //to prevent the page to auto reload on submit
 
-  tasksContainer.innerHTML += `
-    <div class="task-holder">
-      <span class="task">${taskInput.value}</span>
-      <button type="submit" class="delete-task-button">Delete</button>
-    </div>
-    `;
+  //the former approach
+  // tasksContainer.innerHTML += `
+  //   <div class="task-holder">
+  //     <span class="task">${taskInput.value}</span>
+  //     <button type="submit" class="delete-task-button">Delete</button>
+  //   </div>
+  //   `;
+
+  //the insertAdjacentHTML approach
+  tasksContainer.insertAdjacentHTML(
+    "beforeend",
+    `
+  <div class="task-holder">
+    <span class="task">${taskInput.value}</span>
+    <button type="submit" class="delete-task-button">Delete</button>
+  </div>
+  `
+  );
 
   //to clear the input field
   taskInput.value = "";
