@@ -10,27 +10,23 @@ const taskInput = document.querySelector("#task-input-field");
 form.addEventListener("submit", function (event) {
   event.preventDefault(); //to prevent the page to auto reload on submit
 
-  if (taskInput.value == "") {
-    alert("Please enter a valid task, stop entering [SPACE]");
-  } else {
-    tasksContainer.innerHTML += `
+  tasksContainer.innerHTML += `
     <div class="task-holder">
       <span class="task">${taskInput.value}</span>
       <button type="submit" class="delete-task-button">Delete</button>
     </div>
     `;
 
-    //to clear the input field
-    taskInput.value = "";
+  //to clear the input field
+  taskInput.value = "";
 
-    //to tag a finished task
-    const finishedTasks = document.querySelectorAll(".task");
-    finishedTasks.forEach((finishedTask) =>
-      finishedTask.addEventListener("click", function () {
-        finishedTask.classList.toggle("completed");
-      })
-    );
-  }
+  //to tag a finished task
+  const finishedTasks = document.querySelectorAll(".task");
+  finishedTasks.forEach((finishedTask) =>
+    finishedTask.addEventListener("click", function () {
+      finishedTask.classList.toggle("completed");
+    })
+  );
 });
 
 //Handling the delete button
