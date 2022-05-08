@@ -93,6 +93,55 @@ body {
     }
 }
 
+.inner-number {
+    --rotation: 0;
+    transform: rotate(var(--rotation));
+
+    &--1 {
+        --rotation: -30deg;
+    }
+
+    &--2 {
+        --rotation: -60deg;
+    }
+
+    &--3 {
+        --rotation: -90deg;
+    }
+
+    &--4 {
+        --rotation: -120deg;
+    }
+
+    &--5 {
+        --rotation: -150deg;
+    }
+
+    &--6 {
+        --rotation: -180deg;
+    }
+
+    &--7 {
+        --rotation: -210deg;
+    }
+
+    &--8 {
+        --rotation: -240deg;
+    }
+
+    &--9 {
+        --rotation: -270deg;
+    }
+
+    &--10 {
+        --rotation: -300deg;
+    }
+
+    &--11 {
+        --rotation: -330deg;
+    }
+}
+
 .hand {
     --rotation: 0;
     position: absolute;
