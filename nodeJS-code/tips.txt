@@ -1,0 +1,4 @@
+Running NodeJs code in VS Code is done via the Terminal i.e PowerShell, Git Bash
+
+    Command
+    node filename.js
