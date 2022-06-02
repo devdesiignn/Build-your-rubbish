@@ -2,16 +2,15 @@ const prompt = require("prompt-sync")();
 const number = 12;
 let input;
 const failed = "Wrong!, Try Again!";
-const passed = "Weldone, You passed!";
+const passed = "Welldone, You passed!";
 
 console.log("This is a Guessing Game".toUpperCase());
 function guess() {
   input = prompt("Enter Number: ");
-  while (input != number) {
+  if (input != number) {
     console.log(failed);
-    input = prompt("Enter Number: ");
-  }
-  if (input == number) {
+    guess();
+  } else {
     console.log(passed.toUpperCase());
   }
 }
