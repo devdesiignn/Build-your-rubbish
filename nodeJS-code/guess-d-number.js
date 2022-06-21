@@ -5,7 +5,7 @@ const number = 7;
 let input;
 const welcomeMsg = "This is a Guessing Game. \n";
 const hintMsg =
-  "HINT: The number you're guessing is less than 0 and greater then 10 \n";
+  "HINT: The number you're guessing is greater than 0 and less then 10 \n";
 let noOfTries = 3;
 const passed = "Welldone, You passed! \n";
 const failed = "Wrong!, Try Again! \n";
