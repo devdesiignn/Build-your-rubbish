@@ -81,3 +81,13 @@ randomBtn.addEventListener("click", function () {
   currentItem = Math.floor(Math.random() * reviews.length);
   showPerson();
 });
+
+function autoSlider() {
+  currentItem++;
+  if (currentItem > reviews.length - 1) {
+    currentItem = 0;
+  }
+  showPerson();
+}
+
+setInterval(autoSlider, 3000);
