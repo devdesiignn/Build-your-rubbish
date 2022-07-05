@@ -173,7 +173,7 @@ Menu
 */
 
 .menu {
-  padding: 5rem 0;
+  padding: 1rem 0rem;
 }
 .title {
   text-align: center;
@@ -187,11 +187,12 @@ Menu
   margin-right: auto;
 }
 .btn-container {
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   display: flex;
   justify-content: center;
 }
 .filter-btn {
+  border: 1px solid;
   background: transparent;
   border-color: var(--clr-gold);
   font-size: 1rem;
@@ -209,17 +210,17 @@ Menu
   color: var(--clr-white);
 }
 .section-center {
-  width: 90vw;
+  width: 80vw;
   margin: 0 auto;
-  max-width: 1170px;
+  max-width: 1200px;
   display: grid;
-  gap: 3rem 2rem;
+  gap: 2rem 2rem;
   justify-items: center;
 }
 .menu-item {
   display: grid;
   gap: 1rem 2rem;
-  max-width: 25rem;
+  max-width: 24rem;
 }
 .photo {
   object-fit: cover;

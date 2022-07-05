@@ -85,7 +85,7 @@ const menu = [
 const sectionCenter = document.querySelector(".section-center");
 
 //function to display the items
-function showMenuItems(theMenu) {
+function displayMenuItems(theMenu) {
   const menuItems = theMenu
     .map(function (item) {
       return `<article class="menu-item">
@@ -104,7 +104,70 @@ function showMenuItems(theMenu) {
   sectionCenter.innerHTML = menuItems;
 }
 
+//selecting the button container
+const btnContainer = document.querySelector(".btn-container");
+
+//function to fetch, filter and display the buttons
+function displayButtons() {
+  //setting the btn categories and
+  //creating an array of the categories
+  const categories = menu.reduce(
+    //values == the new array
+    //item == individual item in the menu
+    function (values, item) {
+      if (!values.includes(item.category)) {
+        values.push(item.category);
+      }
+      return values;
+    },
+    ["all"]
+  );
+
+  const btnCategories = categories
+    .map(function (category) {
+      //setting the button based on the individual category
+      //in the categories array
+      return `<button type="button" class="filter-btn" data-id="${category}">${category}</button>`;
+    })
+    .join("");
+
+  //setting the button container to show the buttons
+  btnContainer.innerHTML = btnCategories;
+
+  //select all the buttons
+  const filterBtns = document.querySelectorAll(".filter-btn");
+
+  //filtering the menu based on the clicked btn category
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener("click", function (event) {
+      //check the clicked btn for the id as its category
+      const category = event.currentTarget.dataset.id;
+
+      //creating a new array by
+      //filtering the menu via the categories
+      const menuCategory = menu.filter(function (menuItem) {
+        //if the category of the menu is equal to the clicked btn
+        //return the items on that category
+        if (menuItem.category === category) {
+          return menuItem;
+        }
+      });
+
+      //displaying the menu based on the clicked btn
+      //displaying all when the clicked btn == "clicked"
+      if (category === "all") {
+        displayMenuItems(menu);
+      } else {
+        displayMenuItems(menuCategory);
+      }
+    });
+  });
+}
+
 //when the DOM page loads immediately
 //showMenuItem function call
 //{takes in an array which is the "menu"}
-window.addEventListener("DOMContentLoaded", showMenuItems(menu));
+window.addEventListener("DOMContentLoaded", function () {
+  displayButtons();
+  displayMenuItems(menu);
+});
