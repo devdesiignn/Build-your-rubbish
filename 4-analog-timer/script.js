@@ -3,6 +3,11 @@ const secondsHand = document.querySelector(".hand--second");
 const minuteHand = document.querySelector(".hand--minute");
 const hourHand = document.querySelector(".hand--hour");
 
+//setting the rotation property
+function setRotation(handElement, rotationRatio) {
+  handElement.style.setProperty("--rotation", rotationRatio * 360);
+}
+
 function setThetime() {
   //getting the time
   const mainDate = new Date();
@@ -16,11 +21,6 @@ function setThetime() {
   setRotation(secondsHand, secondsRatio);
   setRotation(minuteHand, minuteRatio);
   setRotation(hourHand, hourRatio);
-}
-
-//setting the rotation property
-function setRotation(handElement, rotationRatio) {
-  handElement.style.setProperty("--rotation", rotationRatio * 360);
 }
 
 //setting the time
