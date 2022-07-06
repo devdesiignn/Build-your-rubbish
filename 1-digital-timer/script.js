@@ -29,17 +29,6 @@ function get12hrs() {
   amPm = originalHours < 12 ? "AM" : "PM";
 }
 
-//function to pick choose time [ 24 hrs or 12 hrs format ]
-
-function getTheTime() {
-  is12hrs ? get12hrs() : get24hrs();
-  is12hrs
-    ? (document.getElementById("view").innerText = "See in 24 Hours Format")
-    : (document.getElementById("view").innerText = "See in 12 Hours Format");
-  setTheTime();
-}
-//function call [ pick choose time ]
-setInterval(getTheTime, 1000);
 
 //time formatter [ 1 ... 9 => 01 ... 09 ]
 
@@ -48,11 +37,24 @@ const paddingFormat = (sample) => String(sample).padStart(2, "0");
 //function to display time with the formatter
 
 function setTheTime() {
-  document.getElementById("hours").innerText = paddingFormat(hours);
-  document.getElementById("mins").innerText = paddingFormat(mins);
-  document.getElementById("secs").innerText = paddingFormat(secs);
-  document.getElementById("am-pm").innerText = amPm;
+  document.getElementById("hours").textContent = paddingFormat(hours);
+  document.getElementById("mins").textContent = paddingFormat(mins);
+  document.getElementById("secs").textContent = paddingFormat(secs);
+  document.getElementById("am-pm").textContent = amPm;
 }
+
+//function to pick choose time [ 24 hrs or 12 hrs format ]
+
+function getTheTime() {
+  is12hrs ? get12hrs() : get24hrs();
+  is12hrs
+    ? (document.getElementById("view").textContent = "See in 24 Hours Format")
+    : (document.getElementById("view").textContent = "See in 12 Hours Format");
+  setTheTime();
+}
+
+//function call [ pick choose time ]
+setInterval(getTheTime, 1000);
 
 //toggler for 12 hrs format or 24 hrs format
 
@@ -94,8 +96,8 @@ function darkTheme() {
 function setTheme() {
   isLight ? lightTheme() : darkTheme();
   isLight
-    ? (document.getElementById("theme").innerText = "Switch to Dark Mode")
-    : (document.getElementById("theme").innerText = "Switch to Light Mode");
+    ? (document.getElementById("theme").textContent = "Switch to Dark Mode")
+    : (document.getElementById("theme").textContent = "Switch to Light Mode");
 }
 
 //function call [ light theme or dark theme ]
