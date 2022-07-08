@@ -1,7 +1,7 @@
 const prompt = require("prompt-sync")(); //Calling the prompt-sync module
 
 //Variable Declarations
-const number = 7;
+const number = Math.floor(Math.random() * 10); //Number is randomly generated 0 - 9;
 let input;
 const welcomeMsg = "This is a Guessing Game. \n";
 const hintMsg =
@@ -21,13 +21,16 @@ function guess() {
     noOfTries--;
     input = prompt("Enter Number: ");
     if (number == input) {
+      console.log(`Indeed the number is ${number} \n`);
       console.log(passed.toUpperCase());
+      
       break;
     } else {
       console.log(failed);
       console.log(`You have ${noOfTries} tries left!`);
       if (noOfTries == 0) {
         console.log("Game Over!!!".toUpperCase());
+        console.log(`The number is ${number}`);
       }
     }
   }
