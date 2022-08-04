@@ -23,8 +23,8 @@ function guess() {
     if (number == input) {
       console.log(`Indeed the number is ${number} \n`);
       console.log(passed.toUpperCase());
-      
-      break;
+
+      break; //This breaks the While loop
     } else {
       console.log(failed);
       console.log(`You have ${noOfTries} tries left!`);
